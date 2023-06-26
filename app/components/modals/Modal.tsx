@@ -17,19 +17,18 @@ type ModalProps = {
     secondaryActionLabel?: string;
 };
 
-export function Modal({
-                          isOpen,
-                          onClose,
-                          onSubmit,
-                          title,
-                          body,
-                          actionLabel,
-                          footer,
-                          disabled,
-                          secondaryAction,
-                          secondaryActionLabel
-
-                      }: ModalProps) {
+export const Modal: React.FC<ModalProps> = ({
+                                         isOpen,
+                                         onClose,
+                                         onSubmit,
+                                         title,
+                                         body,
+                                         actionLabel,
+                                         footer,
+                                         disabled,
+                                         secondaryAction,
+                                         secondaryActionLabel
+                                     }) => {
     const [showModal, setShowModal] = useState(isOpen);
 
     useEffect(() => {
@@ -44,7 +43,7 @@ export function Modal({
         setShowModal(false);
         setTimeout(() => {
             onClose();
-        }, 300);
+        }, 300)
     }, [onClose, disabled]);
 
     const handleSubmit = useCallback(() => {
@@ -54,7 +53,6 @@ export function Modal({
 
         onSubmit();
     }, [onSubmit, disabled]);
-
 
     const handleSecondaryAction = useCallback(() => {
         if (disabled || !secondaryAction) {
@@ -98,6 +96,7 @@ export function Modal({
           md:h-auto
           "
                 >
+                    {/*content*/}
                     <div className={`
             translate
             duration-300
@@ -144,7 +143,7 @@ export function Modal({
                   "
                                     onClick={handleClose}
                                 >
-                                    <IoMdClose size={18}/>
+                                    <IoMdClose size={18} />
                                 </button>
                                 <div className="text-lg font-semibold">
                                     {title}

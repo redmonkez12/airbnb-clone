@@ -6,8 +6,10 @@ type RegisterModalStore = {
     onClose(): void;
 };
 
-export function useRegisterModal() {
-    return (
-        <div>a</div>
-    );
-}
+export const useRegisterModal = create<RegisterModalStore>((set) => {
+    return {
+        isOpen: true,
+        onClose: () =>  set({ isOpen: false }),
+        onOpen: () => set({ isOpen: true }),
+    };
+});
