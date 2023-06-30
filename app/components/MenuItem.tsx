@@ -8,7 +8,7 @@ type MenuItemProps = {
 export function MenuItem({ label, onClick }: MenuItemProps) {
     return (
         <div
-            onClick={() => {}}
+            onClick={onClick}
             className="
             px-4
             py-3

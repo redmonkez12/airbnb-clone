@@ -8,7 +8,7 @@ type RegisterModalStore = {
 
 export const useRegisterModal = create<RegisterModalStore>((set) => {
     return {
-        isOpen: true,
+        isOpen: false,
         onClose: () =>  set({ isOpen: false }),
         onOpen: () => set({ isOpen: true }),
     };
