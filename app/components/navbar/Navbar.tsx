@@ -2,10 +2,10 @@ import { Container } from "@/app/components/Container";
 import { Logo } from "@/app/components/Logo";
 import { Search } from "@/app/components/Search";
 import { UserMenu } from "@/app/components/UserMenu";
-import { User } from "@prisma/client";
+import { SafeUSer } from "@/app/types";
 
 type Props = {
-    currentUser?: User;
+    currentUser?: SafeUSer | null;
 };
 
 export function Navbar({ currentUser }: Props) {
