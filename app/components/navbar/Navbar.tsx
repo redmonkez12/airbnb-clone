@@ -3,6 +3,7 @@ import { Logo } from "@/app/components/Logo";
 import { Search } from "@/app/components/Search";
 import { UserMenu } from "@/app/components/UserMenu";
 import { SafeUSer } from "@/app/types";
+import { Categories } from "@/app/components/navbar/Categories";
 
 type Props = {
     currentUser?: SafeUSer | null;
@@ -20,6 +21,8 @@ export function Navbar({ currentUser }: Props) {
                     </div>
                 </Container>
             </div>
+
+            <Categories/>
         </div>
     );
 }
