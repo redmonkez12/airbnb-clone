@@ -1,4 +1,7 @@
 import { IconType } from "react-icons";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+import qs from "query-string";
 
 type CategoryBoxProps = {
     icon: IconType;
@@ -8,8 +11,37 @@ type CategoryBoxProps = {
 };
 
 export function CategoryBox({ icon: Icon, label, selected }: CategoryBoxProps) {
+    const router = useRouter();
+    const params = useSearchParams();
+
+    const handleClick = useCallback(() => {
+        let currentQuery  = {};
+
+        if (params) {
+            currentQuery = qs.parse(params.toString());
+        }
+
+        const updateQuery: any = {
+            ...currentQuery,
+            category: label
+        }
+
+        if (params?.get("category") === label) {
+            delete updateQuery.category;
+        }
+
+        const url = qs.stringifyUrl({
+            url: "/",
+            query: updateQuery,
+        }, { skipNull: true });
+
+        router.push(url);
+    }, [label, params, router]);
+
     return (
-        <div className={
+        <div
+            onClick={handleClick}
+            className={
             `flex
             flex-col
             items-center
@@ -24,6 +56,9 @@ export function CategoryBox({ icon: Icon, label, selected }: CategoryBoxProps) {
             ${selected ? "text-neutral-800" : "text-neutral-500"}
             `}>
             <Icon size={26}/>
+            <div className="font-medium text-sm">
+                {label}
+            </div>
         </div>
     );
 }
