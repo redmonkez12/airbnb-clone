@@ -17,6 +17,7 @@ import { toast } from "react-hot-toast";
 export function RegisterModal() {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+
     const [isLoading, setIsLoading] = useState(false);
 
     const {

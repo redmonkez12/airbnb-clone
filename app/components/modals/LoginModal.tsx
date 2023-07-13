@@ -21,6 +21,7 @@ import { Modal } from "@/app/components/modals/Modal";
 
 export const LoginModal = () => {
     const router = useRouter();
+
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);

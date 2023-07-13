@@ -6,6 +6,13 @@ export function Logo() {
     const router = useRouter();
 
     return (
-        <Image src={"/images/logo.png"} alt={"Logo"} className={"hidden md:block cursor-pointer"} height={100} width={100}/>
+        <Image
+            onClick={() => router.push("/")}
+            src={"/images/logo.png"}
+            alt={"Logo"}
+            className={"hidden md:block cursor-pointer"}
+            height={100}
+            width={100}
+        />
     );
 }
